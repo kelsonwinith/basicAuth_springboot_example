@@ -1,2 +1,13 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import AuthenPanel from '$lib/components/SignPanel.svelte';
+	import { auth } from '$lib/stores/auth';
+</script>
+
+<div class="flex min-h-screen items-center justify-center bg-[#f7f6f3]">
+	{#if $auth.token}
+		<div>User detail would appear here</div>
+		<slot />
+	{:else}
+		<AuthenPanel />
+	{/if}
+</div>
